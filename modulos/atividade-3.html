@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-contraste="normal" data-leitura="normal" data-movimento="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 3 · Roteiro de intervenção com TA · Caminhos da Inclusão</title>
+<meta name="description" content="Atividade 3 do curso Caminhos da Inclusão: plano de adaptação de uma atividade da sua disciplina com tecnologia assistiva ou princípios do DUA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/portal.css?v=14">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B4A8F'/><path d='M7 23 Q16 23 16 16 T25 9' stroke='%23FFD33F' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo principal</a>
+
+<div class="barra-a11y">
+  <div class="env">
+    <p class="barra-a11y__rotulo">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+        <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
+        <path d="M4 8h16M12 8v6m0 0-3.4 7M12 14l3.4 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="btn-a11y__txt">Acessibilidade</span>
+    </p>
+    <div class="barra-a11y__grupo" role="group" aria-label="Tamanho do texto">
+      <button type="button" class="btn-a11y btn-a11y--icone" id="a11y-menos" aria-label="Diminuir o tamanho do texto">A&minus;</button>
+      <span id="a11y-medidor" style="font-family:var(--display);font-size:var(--t-mini);font-weight:700;min-width:44px;text-align:center">100%</span>
+      <button type="button" class="btn-a11y btn-a11y--icone" id="a11y-mais" aria-label="Aumentar o tamanho do texto">A+</button>
+    </div>
+    <button type="button" class="btn-a11y" id="a11y-contraste" aria-pressed="false" aria-label="Alto contraste">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18a9 9 0 0 0 0-18Z" fill="currentColor"/></svg>
+      <span class="btn-a11y__txt">Alto contraste</span>
+    </button>
+    <button type="button" class="btn-a11y" id="a11y-leitura" aria-pressed="false" aria-label="Espaçamento ampliado" title="Aumenta o espaço entre letras, palavras e linhas para facilitar a leitura">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="btn-a11y__txt">Espaçamento ampliado</span>
+    </button>
+    <button type="button" class="btn-a11y" id="a11y-movimento" aria-pressed="false" aria-label="Pausar animações">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+      <span class="btn-a11y__txt">Pausar animações</span>
+    </button>
+    <button type="button" class="btn-a11y" id="a11y-limpar" aria-label="Restaurar padrão"><span class="btn-a11y__txt">Restaurar padrão</span></button>
+    <p id="a11y-aviso" class="oculto-visual" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<header class="topo">
+  <div class="env">
+    <a class="topo__marca" href="../index.html" aria-label="Caminhos da Inclusão — página inicial do portal">
+      <img src="../assets/img/eja-integrada-ept.png" alt="EJA Integrada — EPT, Educação de Jovens e Adultos">
+      <span class="topo__nome">Caminhos da Inclusão<span>Portal do aluno</span></span>
+    </a>
+    <nav class="nav" aria-label="Seções do portal">
+      <a href="../index.html#modulos">Módulos</a>
+      <a href="../index.html#atividades">Atividades</a>
+      <a href="../index.html#biblioteca">Biblioteca</a>
+      <a href="../index.html#funcionamento">Como funciona</a>
+    </nav>
+  </div>
+</header>
+
+<div class="env">
+  <nav class="migalhas" aria-label="Você está aqui">
+    <a href="../index.html">Portal</a><span aria-hidden="true">/</span><a href="modulo-3.html">Módulo 3</a><span aria-hidden="true">/</span>Atividade 3
+  </nav>
+</div>
+
+<section class="capa-interna">
+  <svg class="hero__grafismo" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="#FFD33F" stroke-opacity=".16" stroke-width="2" stroke-linecap="round">
+        <path d="M1020 340C1050 220 1180 220 1210 130S1340 20 1440 30"/>
+        <path d="M1090 340C1120 240 1250 240 1280 160S1400 60 1440 76"/>
+      </g>
+      <g fill="none" stroke="#ffffff" stroke-opacity=".06" stroke-width="1.5">
+        <circle cx="1250" cy="170" r="160"/><circle cx="1250" cy="170" r="250"/>
+      </g>
+    </svg>
+  <div class="env">
+    <div class="capa-interna__meta entrada entrada--1">
+        <span class="pilula ">Atividade 3 · 2h</span>
+        <span class="pilula ">Individual</span>
+        <span class="pilula ">Ligada ao Módulo 3</span>
+    </div>
+    <h1 class="entrada entrada--2">Roteiro de intervenção com Tecnologia Assistiva</h1>
+  </div>
+</section>
+
+<main id="conteudo" class="secao">
+  <div class="env">
+    <div class="conteudo">
+      <div class="painel">
+        <h3>Em uma frase</h3>
+        <p>Pegar uma atividade que você já aplica na sua turma e reescrevê-la usando uma tecnologia
+        assistiva ou um princípio do DUA &mdash; de modo que dê para usar na segunda-feira.</p>
+      </div>
+
+      <h2>O que fazer</h2>
+      <p>Escolha <strong>uma atividade real</strong> da sua disciplina &mdash; uma que você já aplicou,
+      não uma hipótese &mdash; e produza um roteiro de intervenção descrevendo como adaptá-la.</p>
+      <p>O roteiro deve conter:</p>
+      <ol>
+        <li><strong>A atividade original.</strong> Disciplina, modalidade (EJA ou EPT), objetivo de aprendizagem e como ela funciona hoje.</li>
+        <li><strong>A barreira identificada.</strong> Que tipo de estudante encontra dificuldade nessa atividade, e por quê. Use a tipologia da LBI.</li>
+        <li><strong>A intervenção.</strong> Qual tecnologia assistiva ou princípio do DUA você vai aplicar, e exatamente o que muda na condução da aula.</li>
+        <li><strong>Recursos necessários.</strong> O que precisa ser providenciado, quanto custa e quanto tempo leva. Se custa zero, diga que custa zero &mdash; é o melhor resultado possível.</li>
+        <li><strong>Como saber se funcionou.</strong> Um indicador observável, não uma impressão.</li>
+      </ol>
+
+      <div class="painel painel--amarelo">
+        <h3>Escolha o que cabe na sua escola</h3>
+        <p>Um roteiro que depende de equipamento que a escola não tem e não terá é um exercício de
+        redação, não uma intervenção. Prefira o recurso gratuito, o que já está instalado no
+        computador da sala, ou a mudança de condução que não custa nada. O critério é a viabilidade.</p>
+      </div>
+
+      <h2>O que será observado</h2>
+      <ul>
+        <li>A coerência entre a barreira identificada e a intervenção proposta.</li>
+        <li>A viabilidade real da proposta no contexto que você descreveu.</li>
+        <li>A aplicação correta do princípio do DUA ou da tecnologia assistiva escolhida.</li>
+        <li>A existência de um indicador de resultado que alguém de fora conseguiria verificar.</li>
+      </ul>
+
+      <h2>Como entregar</h2>
+      <p>O envio desta atividade é feito na turma do <strong>Google Classroom</strong> do curso, no card
+      &ldquo;Atividade 3&rdquo;. Envie em PDF ou como documento do Google. A devolutiva do professor volta
+      pelo mesmo card &mdash; fique atento às notificações.</p>
+      <div class="marcador">
+        <strong>Falta o link direto do card</strong>
+        <p>O botão abaixo abre o Google Classroom, mas na página inicial: o aluno ainda precisa procurar a turma e a atividade. Quem administra a turma pode trocar o endereço do botão pelo link do card desta atividade, e aí o clique cai direto no lugar certo.</p>
+      </div>
+      <div class="acoes" style="margin-top:26px">
+        <!-- LINK DE ENTREGA: troque o href abaixo pelo link do card desta atividade no Google Classroom -->
+        <a class="btn btn--verde" href="https://classroom.google.com" target="_blank" rel="noopener noreferrer" aria-label="Entregar a Atividade 3 no Google Classroom (abre em uma nova aba)">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 8h16" stroke="currentColor" stroke-width="2"/><path d="M7 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Entregar no Google Classroom
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4h4v4M16 4l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="painel painel--verde">
+        <h3>Este roteiro volta no encontro ao vivo</h3>
+        <p>A primeira parte da pauta do <a href="modulo-4.html">Módulo 4 &mdash; Encontro síncrono</a>
+        é a socialização destes roteiros. Prepare uma apresentação de poucos minutos: o objetivo é
+        formar um repertório coletivo de adaptações que funcionam.</p>
+      </div>
+
+      <nav class="paginacao" aria-label="Navegação entre páginas do curso">
+        <a class="btn btn--contorno" href="modulo-3.html"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16 10H4m0 0 5-5m-5 5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Módulo 3</a>
+        <a class="btn btn--principal" href="modulo-4.html">Módulo 4<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </nav>
+    </div>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="env">
+    <div class="rodape__grade">
+      <div>
+        <h4>O curso</h4>
+        <ul>
+          <li><a href="../index.html#funcionamento">Como funciona</a></li>
+          <li><a href="../index.html#modulos">Módulos</a></li>
+          <li><a href="../index.html#atividades">Atividades</a></li>
+          <li><a href="complementar.html">Biblioteca complementar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Módulos</h4>
+        <ul>
+          <li><a href="modulo-1.html">1 · A teia legal</a></li>
+          <li><a href="modulo-2.html">2 · Barreiras e evasão</a></li>
+          <li><a href="modulo-3.html">3 · Postura e tecnologias</a></li>
+          <li><a href="modulo-4.html">4 · Encontro síncrono</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atividades</h4>
+        <ul>
+          <li><a href="atividade-1.html">1 · Relato de experiência</a></li>
+          <li><a href="atividade-2.html">2 · A evasão de João</a></li>
+          <li><a href="atividade-3.html">3 · Roteiro com TA</a></li>
+          <li><a href="atividade-4.html">4 · Portfólio final</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ministrante</h4>
+        <ul>
+          <li>Prof. Hugo Severiano</li>
+          <li>Educação Especial e Inclusiva</li>
+          <li><a href="mailto:hugo.severiano@academico.ufpb.br">hugo.severiano@academico.ufpb.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape__marcas">
+      <img src="../assets/img/ufpb.png" alt="Universidade Federal da Paraíba" class="alto">
+      <img src="../assets/img/cchsa.png" alt="Centro de Ciências Humanas, Sociais e Agrárias">
+      <img src="../assets/img/cavn.png" alt="Colégio Agrícola Vidal de Negreiros">
+      <img src="../assets/img/eja-integrada-ept.png" alt="EJA Integrada — EPT" style="height:50px">
+    </div>
+    <p class="rodape__base">
+      Universidade Federal da Paraíba · Centro de Ciências Humanas, Sociais e Agrárias · Colégio Agrícola Vidal de Negreiros<br>
+      Programa de Apoio à Educação de Jovens e Adultos Integrada à Educação Profissional — EJA-EPT<br>
+      Curso de atualização docente · 15 horas · 2026
+    </p>
+  </div>
+</footer>
+
+<!-- ========================================================================
+     VLibras — tradução automática para Libras (serviço do Governo Federal).
+     Carrega um script do domínio vlibras.gov.br. Para ativar, remova os
+     marcadores de comentário abaixo. Exige conexão com a internet.
+     ========================================================================
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+-->
+
+<script src="../assets/js/portal.js?v=14"></script>
+</body>
+</html>

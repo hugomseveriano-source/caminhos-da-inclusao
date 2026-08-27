@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-contraste="normal" data-leitura="normal" data-movimento="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caminhos da Inclusão · Portal do Aluno</title>
+<meta name="description" content="Portal do curso de atualização docente Caminhos da Inclusão: intersecções, barreiras e práticas na EJA e na EPT para o público da Educação Especial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/portal.css?v=14">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B4A8F'/><path d='M7 23 Q16 23 16 16 T25 9' stroke='%23FFD33F' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo principal</a>
+
+<!-- ============================================ Barra de acessibilidade -->
+<div class="barra-a11y">
+  <div class="env">
+    <p class="barra-a11y__rotulo">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16">
+        <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
+        <path d="M4 8h16M12 8v6m0 0-3.4 7M12 14l3.4 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="btn-a11y__txt">Acessibilidade</span>
+    </p>
+
+    <div class="barra-a11y__grupo" role="group" aria-label="Tamanho do texto">
+      <button type="button" class="btn-a11y btn-a11y--icone" id="a11y-menos" aria-label="Diminuir o tamanho do texto">A−</button>
+      <span id="a11y-medidor" aria-live="off" style="font-family:var(--display);font-size:var(--t-mini);font-weight:700;min-width:44px;text-align:center">100%</span>
+      <button type="button" class="btn-a11y btn-a11y--icone" id="a11y-mais" aria-label="Aumentar o tamanho do texto">A+</button>
+    </div>
+
+    <button type="button" class="btn-a11y" id="a11y-contraste" aria-pressed="false" aria-label="Alto contraste">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v18a9 9 0 0 0 0-18Z" fill="currentColor"/></svg>
+      <span class="btn-a11y__txt">Alto contraste</span>
+    </button>
+
+    <button type="button" class="btn-a11y" id="a11y-leitura" aria-pressed="false" aria-label="Espaçamento ampliado" title="Aumenta o espaço entre letras, palavras e linhas para facilitar a leitura">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="btn-a11y__txt">Espaçamento ampliado</span>
+    </button>
+
+    <button type="button" class="btn-a11y" id="a11y-movimento" aria-pressed="false" aria-label="Pausar animações">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+      <span class="btn-a11y__txt">Pausar animações</span>
+    </button>
+
+    <button type="button" class="btn-a11y" id="a11y-limpar" aria-label="Restaurar padrão"><span class="btn-a11y__txt">Restaurar padrão</span></button>
+
+    <p id="a11y-aviso" class="oculto-visual" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<!-- ============================================================ Cabeçalho -->
+<header class="topo">
+  <div class="env">
+    <a class="topo__marca" href="index.html" aria-label="Caminhos da Inclusão — página inicial do portal">
+      <img src="assets/img/eja-integrada-ept.png" alt="EJA Integrada — EPT, Educação de Jovens e Adultos">
+      <span class="topo__nome">Caminhos da Inclusão<span>Portal do aluno</span></span>
+    </a>
+    <nav class="nav" aria-label="Seções do portal">
+      <a href="#modulos">Módulos</a>
+      <a href="#atividades">Atividades</a>
+      <a href="#biblioteca">Biblioteca</a>
+      <a href="#funcionamento">Como funciona</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ================================================================= Hero -->
+<section class="hero">
+  <svg class="hero__grafismo" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="fio" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#FFD33F" stop-opacity=".30"/>
+        <stop offset="55%" stop-color="#239F6B" stop-opacity=".26"/>
+        <stop offset="100%" stop-color="#1160B4" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#fio)" stroke-width="2" stroke-linecap="round">
+      <path d="M980 640C1010 470 1140 470 1170 330S1300 150 1440 140"/>
+      <path d="M1050 640C1080 500 1210 500 1240 370S1360 190 1440 200"/>
+      <path d="M1120 640C1150 530 1280 530 1310 410S1400 250 1440 262"/>
+    </g>
+    <g fill="#FFD33F" opacity=".2">
+      <circle cx="1170" cy="330" r="6"/><circle cx="1240" cy="370" r="6"/><circle cx="1310" cy="410" r="6"/>
+    </g>
+    <g fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="1.5">
+      <circle cx="1230" cy="330" r="210"/><circle cx="1230" cy="330" r="310"/>
+    </g>
+  </svg>
+
+  <div class="env">
+    <p class="hero__olho entrada entrada--1">
+      <b>Programa de Apoio à Educação de Jovens e Adultos<br>Integrada à Educação Profissional (EJA-EPT)</b>
+      <span>Educação Especial · EJA · EPT — Portal do aluno</span>
+    </p>
+
+    <h1 class="entrada entrada--2"><span>Caminhos</span><span>da Inclusão</span></h1>
+
+    <div class="hero__regua" aria-hidden="true"></div>
+
+    <p class="hero__sub entrada entrada--3">Intersecções, barreiras e práticas na EJA e na EPT para o público da Educação Especial.</p>
+
+    <div class="blocos entrada entrada--4">
+      <div class="bloco-num bloco-num--branco">
+        <strong><span data-contar="15" data-sufixo="h">15h</span></strong>
+        <em>Carga horária</em>
+      </div>
+      <div class="bloco-num bloco-num--verde">
+        <strong>4<span aria-hidden="true">+</span><span class="oculto-visual"> módulos e </span>4</strong>
+        <em>Módulos e atividades</em>
+      </div>
+      <div class="bloco-num bloco-num--amarelo">
+        <strong>14/08<br>a 25/09</strong>
+        <em>2026 · 100% remoto</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= Como funciona -->
+<section class="secao secao--cinza" id="funcionamento">
+  <div class="env">
+    <div class="secao__cabeca">
+      <p class="secao__olho">Antes de começar</p>
+      <h2>Como este curso funciona</h2>
+      <p>Você é professor e adulto. O curso foi montado para respeitar isso: sem cadeado, sem prazo semanal, sem prova.</p>
+    </div>
+
+    <div class="grade-atividades">
+      <article class="atividade revelar">
+        <div class="atividade__capa atividade__capa--azul">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="8" y="12" width="32" height="40" rx="3" stroke="currentColor" stroke-width="3"/>
+            <path d="M16 24h16M16 32h16M16 40h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M42 26l10 6-10 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <h3>Estude na ordem que quiser</h3>
+          <p>Os quatro módulos ficam abertos desde o primeiro dia. A numeração indica um percurso sugerido — do fundamento legal à prática —, não uma trava.</p>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.08s">
+        <div class="atividade__capa atividade__capa--verde">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M32 10 12 20v14c0 12 8 18 20 20 12-2 20-8 20-20V20L32 10Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M24 32l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <h3>A teoria vem antes do encontro</h3>
+          <p>Sala de aula invertida: você absorve os conceitos nas aulas assíncronas para que as quatro horas ao vivo sejam de debate e casos reais, não de exposição.</p>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.16s">
+        <div class="atividade__capa atividade__capa--amarelo">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="10" y="14" width="44" height="34" rx="4" stroke="currentColor" stroke-width="3"/>
+            <path d="M10 24h44" stroke="currentColor" stroke-width="3"/>
+            <path d="M24 36l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <h3>As entregas vão no Google Classroom</h3>
+          <p>Cada atividade tem seu enunciado aqui e o campo de envio na turma do Classroom. A devolutiva do professor volta por lá.</p>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.24s">
+        <div class="atividade__capa atividade__capa--neutro">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="3"/>
+            <path d="M32 20v13l9 5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <h3>Quinze horas, seis semanas</h3>
+          <p>De 14 de agosto a 25 de setembro de 2026. São cerca de duas horas e meia por semana — cabe num domingo à tarde.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= Módulos -->
+<section class="secao" id="modulos">
+  <div class="env">
+    <div class="secao__cabeca">
+      <p class="secao__olho">O percurso</p>
+      <h2>Módulos do curso</h2>
+      <p>Do que a lei garante ao que você faz na segunda-feira. Cada módulo tem a aula, os materiais de apoio e as referências.</p>
+    </div>
+
+    <div class="trilha">
+      <div class="trilha__progresso" aria-hidden="true"></div>
+
+      <!-- ---------------------------------------------------- Módulo 1 -->
+      <div class="etapa">
+        <div class="etapa__no" aria-hidden="true">1</div>
+        <article class="card card--azul revelar">
+          <div>
+            <div class="card__topo">
+              <span class="pilula">Módulo 1 · 1h30</span>
+              <span class="pilula">Assíncrono</span>
+            </div>
+            <h3>A Teia Legal: EJA, EPT e Educação Especial</h3>
+            <p class="card__texto">O direito à educação ao longo da vida não termina aos 17 anos. Este módulo percorre o que a LDB, a Lei Brasileira de Inclusão e os pareceres do CNE dizem sobre o adulto com deficiência — e o que isso obriga a sua escola a fazer.</p>
+            <ul class="topicos">
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>LDB, artigos 37-38 e 58-60</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>LBI e o conceito legal de barreira</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Parecer CNE/CEB 11/2000</li>
+            </ul>
+            <div class="acoes">
+              <a class="btn btn--principal" href="https://youtu.be/uwkZMdYZPHo" target="_blank" rel="noopener" aria-label="Assistir a aula do M&oacute;dulo 1 no YouTube (abre em uma nova aba)"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="1.5" y="4" width="17" height="12" rx="3.5" fill="currentColor"/><path d="M8.4 7.8l4.6 2.2-4.6 2.2V7.8Z" fill="#fff"/></svg>Assistir a aula no YouTube<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4h4v4M16 4l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="btn btn--contorno" href="modulos/modulo-1.html">Plano do m&oacute;dulo</a>
+              <a class="btn btn--contorno" href="modulos/atividade-1.html">Ir para a Atividade 1</a>
+            </div>
+          </div>
+          <div class="card__cena" aria-hidden="true">
+            <svg viewBox="0 0 320 230" fill="none" aria-hidden="true" focusable="false">
+              <rect x="20" y="34" width="150" height="176" rx="8" fill="#fff" stroke="#C6D8EE" stroke-width="2" transform="rotate(-5 95 122)"/>
+              <rect x="60" y="20" width="150" height="176" rx="8" fill="#fff" stroke="#0B4A8F" stroke-width="2.5"/>
+              <path d="M80 52h110M80 68h110M80 84h84M80 108h110M80 124h68" stroke="#C6D8EE" stroke-width="5" stroke-linecap="round"/>
+              <rect x="80" y="146" width="66" height="20" rx="6" fill="#FFD33F"/>
+              <circle cx="252" cy="58" r="24" fill="#239F6B"/>
+              <path d="M242 58.5l7 7 13-14" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="268" cy="140" r="18" fill="#0B4A8F"/>
+              <path d="M268 132v16M260 140h16" stroke="#FFD33F" stroke-width="3.4" stroke-linecap="round"/>
+              <circle cx="228" cy="196" r="14" fill="#FFD33F"/>
+              <g stroke="#0B4A8F" stroke-width="2" stroke-dasharray="5 5">
+                <path d="M210 40 232 55M212 132l40 6M198 178l16 12"/>
+              </g>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------------------------------------------- Módulo 2 -->
+      <div class="etapa">
+        <div class="etapa__no" aria-hidden="true">2</div>
+        <article class="card card--verde revelar">
+          <div>
+            <div class="card__topo">
+              <span class="pilula">Módulo 2 · 2h</span>
+              <span class="pilula">Assíncrono</span>
+            </div>
+            <h3>Barreiras de acessibilidade e a expulsão silenciosa</h3>
+            <p class="card__texto">A evasão raramente é uma escolha do aluno. Este módulo mostra como a oficina sem adaptação e a apostila infantilizada operam como mecanismos de expulsão — e como a distorção idade-etapa se agrava quando a deficiência entra na conta.</p>
+            <ul class="topicos">
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>As quatro barreiras da LBI</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Oficinas e laboratórios da EPT</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Distorção idade-etapa</li>
+            </ul>
+            <div class="acoes">
+              <a class="btn btn--principal" href="https://youtu.be/KxLC8By-WeU" target="_blank" rel="noopener" aria-label="Assistir a aula do M&oacute;dulo 2 no YouTube (abre em uma nova aba)"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="1.5" y="4" width="17" height="12" rx="3.5" fill="currentColor"/><path d="M8.4 7.8l4.6 2.2-4.6 2.2V7.8Z" fill="#fff"/></svg>Assistir a aula no YouTube<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4h4v4M16 4l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="btn btn--contorno" href="modulos/modulo-2.html">Plano do m&oacute;dulo</a>
+              <a class="btn btn--contorno" href="modulos/atividade-2.html">Ir para a Atividade 2</a>
+            </div>
+          </div>
+          <div class="card__cena" aria-hidden="true">
+            <svg viewBox="0 0 320 230" fill="none" aria-hidden="true" focusable="false">
+              <g fill="#0B4A8F">
+                <rect x="24" y="60" width="58" height="26" rx="4"/><rect x="88" y="60" width="58" height="26" rx="4"/>
+                <rect x="24" y="92" width="34" height="26" rx="4"/><rect x="64" y="92" width="58" height="26" rx="4"/>
+                <rect x="24" y="124" width="58" height="26" rx="4"/><rect x="88" y="124" width="34" height="26" rx="4"/>
+                <rect x="24" y="156" width="98" height="26" rx="4"/>
+              </g>
+              <g fill="#239F6B" opacity=".35">
+                <rect x="128" y="92" width="30" height="26" rx="4"/><rect x="128" y="124" width="42" height="26" rx="4"/>
+              </g>
+              <path d="M152 60h42M152 60v130h56" stroke="#239F6B" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round"/>
+              <circle cx="240" cy="76" r="19" fill="#FFD33F"/>
+              <path d="M240 96v46M240 108l-18 12M240 108l18 12M240 142l-15 30M240 142l15 30" stroke="#FFD33F" stroke-width="7" stroke-linecap="round"/>
+              <path d="M276 40l24 24M300 40l-24 24" stroke="#0B4A8F" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------------------------------------------- Módulo 3 -->
+      <div class="etapa">
+        <div class="etapa__no" aria-hidden="true">3</div>
+        <article class="card card--amarelo revelar">
+          <div>
+            <div class="card__topo">
+              <span class="pilula">Módulo 3 · 2h</span>
+              <span class="pilula">Assíncrono</span>
+            </div>
+            <h3>Postura docente e Tecnologias Assistivas</h3>
+            <p class="card__texto">A diferença entre ajudar e mediar decide o que o aluno aprende sobre si mesmo. Aqui o curso desmonta o capacitismo cotidiano, apresenta o Desenho Universal para a Aprendizagem e entrega um catálogo de tecnologia assistiva que cabe no orçamento da escola pública.</p>
+            <ul class="topicos">
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Capacitismo nas relações de ensino</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Desenho Universal (DUA)</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Catálogo de TA de baixo custo</li>
+            </ul>
+            <div class="acoes">
+              <a class="btn btn--principal" href="modulos/modulo-3.html">Abrir a aula<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="btn btn--contorno" href="modulos/atividade-3.html">Ir para a Atividade 3</a>
+            </div>
+          </div>
+          <div class="card__cena" aria-hidden="true">
+            <svg viewBox="0 0 320 230" fill="none" aria-hidden="true" focusable="false">
+              <rect x="34" y="34" width="176" height="122" rx="10" fill="#0B4A8F"/>
+              <rect x="46" y="48" width="152" height="94" rx="5" fill="#fff"/>
+              <path d="M104 172h36l8 22h-52l8-22Z" fill="#0B4A8F"/>
+              <rect x="86" y="192" width="72" height="9" rx="4.5" fill="#0B4A8F"/>
+              <g stroke="#239F6B" stroke-width="4" stroke-linecap="round">
+                <path d="M62 70h58M62 86h84M62 102h44"/>
+              </g>
+              <circle cx="176" cy="112" r="17" fill="#FFD33F"/>
+              <path d="M170 112l4.5 4.5 8-9" stroke="#0B4A8F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <g fill="#239F6B">
+                <rect x="232" y="52" width="62" height="40" rx="7"/>
+                <rect x="232" y="106" width="62" height="40" rx="7" opacity=".55"/>
+              </g>
+              <path d="M244 72h38M244 126h38" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="263" cy="184" r="24" fill="#FFD33F"/>
+              <path d="M263 172v24M251 184h24" stroke="#0B4A8F" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- ---------------------------------------------------- Módulo 4 -->
+      <div class="etapa">
+        <div class="etapa__no" aria-hidden="true">4</div>
+        <article class="card card--neutro card--desativado revelar">
+          <div>
+            <div class="card__topo">
+              <span class="pilula pilula--sincrono">Módulo 4 · 4h</span>
+              <span class="pilula">Ao vivo</span>
+              <span class="pilula pilula--breve">Em breve</span>
+            </div>
+            <h3>Encontro síncrono: roda de conversa e oficina de casos</h3>
+            <p class="card__texto">Quatro horas ao vivo para socializar os roteiros de intervenção, debater os limites reais do AEE atuando junto com a EPT e a EJA, e colocar na mesa as dúvidas e as angústias que a formação escrita não alcança.</p>
+            <ul class="topicos">
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Socialização dos roteiros</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sala de recursos e oficina</li>
+              <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".15"/><path d="M6 10.5l2.6 2.6L14 7.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Espaço aberto para dúvidas</li>
+            </ul>
+            <div class="acoes">
+              <a class="btn btn--principal" href="modulos/modulo-4.html">Ver a pauta<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <span class="pilula pilula--aviso">Data a confirmar</span>
+            </div>
+          </div>
+          <div class="card__cena" aria-hidden="true">
+            <svg viewBox="0 0 320 230" fill="none" aria-hidden="true" focusable="false">
+              <circle cx="160" cy="118" r="88" stroke="#C9D3DE" stroke-width="2.5" stroke-dasharray="9 9"/>
+              <g fill="#8FA3B8">
+                <circle cx="160" cy="30" r="20"/><circle cx="238" cy="74" r="20"/><circle cx="238" cy="162" r="20"/>
+                <circle cx="160" cy="206" r="20"/><circle cx="82" cy="162" r="20"/><circle cx="82" cy="74" r="20"/>
+              </g>
+              <circle cx="160" cy="118" r="40" fill="#0B4A8F" opacity=".2"/>
+              <path d="M146 104l30 14-30 14v-28Z" fill="#0B4A8F" opacity=".45"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== Atividades -->
+<section class="secao secao--cinza" id="atividades">
+  <div class="env">
+    <div class="secao__cabeca">
+      <p class="secao__olho">O que você produz</p>
+      <h2>Atividades</h2>
+      <p>Nada de prova. Você produz quatro peças que servem na sua escola depois que o curso acabar. O enunciado fica aqui; o envio, no Google Classroom.</p>
+    </div>
+
+    <div class="grade-atividades">
+      <article class="atividade revelar">
+        <div class="atividade__capa atividade__capa--azul">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 14a4 4 0 0 1 4-4h30a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H20l-9 8v-8h-1a4 4 0 0 1-4-4V14Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M15 20h20M15 28h13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 26h4a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4h-1v6l-7-6H36" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <p class="atividade__num">Atividade 1 · 1h30</p>
+          <h3>Relato de experiência</h3>
+          <p>Um caso vivido na sua escola, analisado à luz da Resolução 3/2025, da LBI e das diretrizes da EPT. Postado no fórum da turma, para todos debaterem.</p>
+          <ul class="atividade__pes">
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Individual, postado no fórum</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ligado ao Módulo 1</li>
+          </ul>
+          <a class="link-seta" href="modulos/atividade-1.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.08s">
+        <div class="atividade__capa atividade__capa--verde">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="12" y="8" width="34" height="44" rx="4" stroke="currentColor" stroke-width="3"/>
+            <path d="M20 20h18M20 28h18M20 36h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="44" cy="42" r="11" fill="#fff" stroke="currentColor" stroke-width="3"/>
+            <path d="M52 50l6 6" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <p class="atividade__num">Atividade 2 · 2h</p>
+          <h3>Estudo de caso: a evasão de João</h3>
+          <p>Um estudante de 28 anos abandona o técnico integrado à EJA. Você redige o laudo de barreiras apontando onde o sistema falhou.</p>
+          <ul class="atividade__pes">
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Individual, com devolutiva</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ligada ao Módulo 2</li>
+          </ul>
+          <a class="link-seta" href="modulos/atividade-2.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.16s">
+        <div class="atividade__capa atividade__capa--amarelo">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="14" y="12" width="36" height="42" rx="4" stroke="currentColor" stroke-width="3"/>
+            <rect x="25" y="6" width="14" height="10" rx="3" stroke="currentColor" stroke-width="3" fill="#fff"/>
+            <path d="M22 30h12M22 40h20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="43" cy="28" r="7" stroke="currentColor" stroke-width="3"/>
+            <path d="M43 21v-3M43 38v-3M50 28h3M33 28h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <p class="atividade__num">Atividade 3 · 2h</p>
+          <h3>Roteiro de intervenção com TA</h3>
+          <p>Um plano prático: como adaptar uma atividade da sua própria disciplina usando tecnologia assistiva ou um princípio do DUA.</p>
+          <ul class="atividade__pes">
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Aplicável na sua turma real</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Socializado no encontro ao vivo</li>
+          </ul>
+          <a class="link-seta" href="modulos/atividade-3.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="atividade revelar" style="--atraso:.24s">
+        <div class="atividade__capa atividade__capa--neutro">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M8 18a4 4 0 0 1 4-4h13l6 7h21a4 4 0 0 1 4 4v25a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V18Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M32 30l3.1 6.3 7 1-5 4.9 1.2 6.9-6.3-3.3-6.3 3.3 1.2-6.9-5-4.9 7-1L32 30Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="atividade__corpo">
+          <p class="atividade__num">Atividade 4 · Entrega final</p>
+          <h3>Portfólio e autoavaliação</h3>
+          <p>O fechamento do percurso: você reúne o que produziu e escreve o que mudou na sua leitura da própria prática.</p>
+          <ul class="atividade__pes">
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Enunciado em preparação</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Requisito para o certificado</li>
+          </ul>
+          <a class="link-seta" href="modulos/atividade-4.html">Ver o que já está definido<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== Biblioteca -->
+<section class="secao" id="biblioteca">
+  <div class="env">
+    <div class="biblioteca revelar">
+      <div>
+        <p class="secao__olho" style="color:var(--amarelo)">Material de apoio</p>
+        <h2>Biblioteca complementar</h2>
+        <p>Tudo o que não cabe dentro de uma aula, reunido num lugar só: a legislação na íntegra, o catálogo de tecnologia assistiva e as referências que sustentam o curso. Consulta livre, sem avaliação — para levar de volta para a escola.</p>
+        <a class="btn btn--amarelo" href="modulos/complementar.html" style="margin-top:8px">Abrir a biblioteca<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div>
+        <ul class="acervo">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Legislação: LDB, LBI e resoluções do CNE</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Catálogo de Tecnologias Assistivas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 0-2 2V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 1 2 2V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Referências teóricas do curso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8h.01M11 12h1v5h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Glossário: DUA, AEE, PAEE, capacitismo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =============================================================== Rodapé -->
+<footer class="rodape">
+  <div class="env">
+    <div class="rodape__grade">
+      <div>
+        <h4>O curso</h4>
+        <ul>
+          <li><a href="#funcionamento">Como funciona</a></li>
+          <li><a href="#modulos">Módulos</a></li>
+          <li><a href="#atividades">Atividades</a></li>
+          <li><a href="#biblioteca">Biblioteca complementar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Módulos</h4>
+        <ul>
+          <li><a href="modulos/modulo-1.html">1 · A teia legal</a></li>
+          <li><a href="modulos/modulo-2.html">2 · Barreiras e evasão</a></li>
+          <li><a href="modulos/modulo-3.html">3 · Postura e tecnologias</a></li>
+          <li><a href="modulos/modulo-4.html">4 · Encontro síncrono</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atividades</h4>
+        <ul>
+          <li><a href="modulos/atividade-1.html">1 · Relato de experiência</a></li>
+          <li><a href="modulos/atividade-2.html">2 · A evasão de João</a></li>
+          <li><a href="modulos/atividade-3.html">3 · Roteiro com TA</a></li>
+          <li><a href="modulos/atividade-4.html">4 · Portfólio final</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ministrante</h4>
+        <ul>
+          <li>Prof. Hugo Severiano</li>
+          <li>Educação Especial e Inclusiva</li>
+          <li><a href="mailto:hugo.severiano@academico.ufpb.br">hugo.severiano@academico.ufpb.br</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape__marcas">
+      <img src="assets/img/ufpb.png" alt="Universidade Federal da Paraíba" class="alto">
+      <img src="assets/img/cchsa.png" alt="Centro de Ciências Humanas, Sociais e Agrárias">
+      <img src="assets/img/cavn.png" alt="Colégio Agrícola Vidal de Negreiros">
+      <img src="assets/img/eja-integrada-ept.png" alt="EJA Integrada — EPT" style="height:50px">
+    </div>
+
+    <p class="rodape__base">
+      Universidade Federal da Paraíba · Centro de Ciências Humanas, Sociais e Agrárias · Colégio Agrícola Vidal de Negreiros<br>
+      Programa de Apoio à Educação de Jovens e Adultos Integrada à Educação Profissional — EJA-EPT<br>
+      Curso de atualização docente · 15 horas · 2026
+    </p>
+  </div>
+</footer>
+
+<!-- ========================================================================
+     VLibras — tradução automática para Libras (serviço do Governo Federal).
+     Carrega um script do domínio vlibras.gov.br. Para ativar, remova os
+     marcadores de comentário abaixo. Exige conexão com a internet.
+     ========================================================================
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+-->
+
+<script src="assets/js/portal.js?v=14"></script>
+</body>
+</html>

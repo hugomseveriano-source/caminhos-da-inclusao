@@ -1,0 +1,16 @@
+# As aulas narradas ficam no YouTube, não neste repositório.
+Modulo 1.html
+Modulo 2.html
+
+# Documentos internos: ficam na sua pasta, não vão para o site público.
+COMO-PUBLICAR.md
+Projeto aulas.md
+
+# Lixo do sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Arquivos temporários de editor
+*~
+*.tmp
