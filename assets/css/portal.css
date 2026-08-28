@@ -938,6 +938,24 @@ a { color: var(--azul); }
 
 .paginacao { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--linha); }
 
+/* Citações: falas de coordenação e professores no material da Atividade 2. */
+.conteudo blockquote {
+  margin: 26px 0;
+  padding: 22px 26px;
+  background: var(--azul-050);
+  border-left: 5px solid var(--azul);
+  border-radius: var(--raio-sm);
+  font-style: italic;
+  color: var(--tinta);
+}
+.conteudo blockquote > :last-child { margin-bottom: 0; }
+[data-contraste="alto"] .conteudo blockquote {
+  background: #000;
+  border: 2px solid #FFF;
+  border-left: 6px solid #FFD33F;
+  color: #FFF;
+}
+
 .refs { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
 .refs li { padding-left: 20px; border-left: 3px solid var(--linha); font-size: var(--t-peq); color: var(--tinta-60); line-height: 1.6; }
 .refs strong { color: var(--tinta); }
