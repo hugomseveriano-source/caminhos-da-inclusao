@@ -8,10 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/portal.css?v=16">
+<link rel="stylesheet" href="assets/css/portal.css?v=26">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B4A8F'/><path d='M7 23 Q16 23 16 16 T25 9' stroke='%23FFD33F' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
 </head>
 <body>
+
+<div class="progresso-leitura" id="progresso-leitura" aria-hidden="true"></div>
 
 <a class="pular" href="#conteudo">Pular para o conteúdo principal</a>
 
@@ -80,17 +82,29 @@
         <stop offset="55%" stop-color="#239F6B" stop-opacity=".26"/>
         <stop offset="100%" stop-color="#1160B4" stop-opacity="0"/>
       </linearGradient>
+      <radialGradient id="sol">
+        <stop offset="0%"   stop-color="#FFFFFF" stop-opacity=".95"/>
+        <stop offset="16%"  stop-color="#FFD33F" stop-opacity=".92"/>
+        <stop offset="42%"  stop-color="#FFD33F" stop-opacity=".34"/>
+        <stop offset="100%" stop-color="#FFD33F" stop-opacity="0"/>
+      </radialGradient>
     </defs>
-    <g fill="none" stroke="url(#fio)" stroke-width="2" stroke-linecap="round">
-      <path d="M980 640C1010 470 1140 470 1170 330S1300 150 1440 140"/>
-      <path d="M1050 640C1080 500 1210 500 1240 370S1360 190 1440 200"/>
-      <path d="M1120 640C1150 530 1280 530 1310 410S1400 250 1440 262"/>
+    <g fill="none" stroke-linecap="round">
+      <path class="fio-base" d="M980 640C1010 470 1140 470 1170 330S1300 150 1440 140"/>
+      <path class="fio-base" d="M1050 640C1080 500 1210 500 1240 370S1360 190 1440 200"/>
+      <path class="fio-base" d="M1120 640C1150 530 1280 530 1310 410S1400 250 1440 262"/>
+      <path class="fio-luz" d="M980 640C1010 470 1140 470 1170 330S1300 150 1440 140"/>
+      <path class="fio-luz" d="M1050 640C1080 500 1210 500 1240 370S1360 190 1440 200"/>
+      <path class="fio-luz" d="M1120 640C1150 530 1280 530 1310 410S1400 250 1440 262"/>
     </g>
-    <g fill="#FFD33F" opacity=".2">
-      <circle cx="1170" cy="330" r="6"/><circle cx="1240" cy="370" r="6"/><circle cx="1310" cy="410" r="6"/>
+    <g>
+      <circle class="sol" cx="1170" cy="330" r="30"/>
+      <circle class="sol" cx="1240" cy="370" r="30"/>
+      <circle class="sol" cx="1310" cy="410" r="30"/>
     </g>
-    <g fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="1.5">
-      <circle cx="1230" cy="330" r="210"/><circle cx="1230" cy="330" r="310"/>
+    <g fill="none" stroke="#ffffff" stroke-width="1.5">
+      <circle class="anel" cx="1230" cy="330" r="210"/>
+      <circle class="anel" cx="1230" cy="330" r="310"/>
     </g>
   </svg>
 
@@ -100,7 +114,7 @@
       <span>Educação Especial · EJA · EPT — Portal do aluno</span>
     </p>
 
-    <h1 class="entrada entrada--2"><span>Caminhos</span><span>da Inclusão</span></h1>
+    <h1 class="hero__titulo"><span>Caminhos</span><span>da Inclusão</span></h1>
 
     <div class="hero__regua" aria-hidden="true"></div>
 
@@ -126,7 +140,7 @@
 <!-- ======================================================= Como funciona -->
 <section class="secao secao--cinza" id="funcionamento">
   <div class="env">
-    <div class="secao__cabeca">
+    <div class="secao__cabeca revelar">
       <p class="secao__olho">Antes de começar</p>
       <h2>Como este curso funciona</h2>
       <p>Você é professor e adulto. O curso foi montado para respeitar isso: sem cadeado, sem prazo semanal, sem prova.</p>
@@ -193,7 +207,7 @@
 <!-- ============================================================= Módulos -->
 <section class="secao" id="modulos">
   <div class="env">
-    <div class="secao__cabeca">
+    <div class="secao__cabeca revelar">
       <p class="secao__olho">O percurso</p>
       <h2>Módulos do curso</h2>
       <p>Do que a lei garante ao que você faz na segunda-feira. Cada módulo tem a aula, os materiais de apoio e as referências.</p>
@@ -373,7 +387,7 @@
 <!-- ========================================================== Atividades -->
 <section class="secao secao--cinza" id="atividades">
   <div class="env">
-    <div class="secao__cabeca">
+    <div class="secao__cabeca revelar">
       <p class="secao__olho">O que você produz</p>
       <h2>Atividades</h2>
       <p>Nada de prova. Você produz quatro peças que servem na sua escola depois que o curso acabar. O enunciado fica aqui; o envio, no Google Classroom.</p>
@@ -558,6 +572,6 @@
 <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 -->
 
-<script src="assets/js/portal.js?v=16"></script>
+<script src="assets/js/portal.js?v=26"></script>
 </body>
 </html>

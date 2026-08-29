@@ -115,27 +115,120 @@
     return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  /* --------------------------------------- 3. Revelação por rolagem */
+  /* ----------------------------- 2b. Títulos divididos em palavras
+     Cada palavra vira uma caixa com seu próprio atraso. O aria-label
+     guarda a frase inteira, então o leitor de tela lê normalmente e não
+     percebe a divisão. Só roda quando há movimento: com animação desligada
+     o título fica como sempre esteve, sem span nenhum. */
+  function dividirEmPalavras(seletor) {
+    if (!movimentoOk()) return;
+    var titulos = document.querySelectorAll(seletor);
+    for (var i = 0; i < titulos.length; i++) {
+      var el = titulos[i];
+      if (el.querySelector('.palavra')) continue;          /* já dividido */
+      var texto = el.textContent.replace(/\s+/g, ' ').trim();
+      if (!texto) continue;
+      el.setAttribute('aria-label', texto);
+      var partes = texto.split(' ');
+      var html = '';
+      for (var p = 0; p < partes.length; p++) {
+        html += '<span class="palavra" style="--i:' + p + '">' + partes[p] + '</span>';
+        if (p < partes.length - 1) html += ' ';
+      }
+      el.innerHTML = html;
+    }
+  }
+
+  /* O título do hero é o maior texto da página: aqui vale letra por letra.
+     Ele tem duas linhas em <span>; cada uma é dividida separadamente para
+     a quebra de linha não se perder. O espaço vira uma letra sem conteúdo,
+     para as palavras não colarem. */
+  function dividirEmLetras(seletor) {
+    if (!movimentoOk()) return;
+    var alvos = document.querySelectorAll(seletor);
+    for (var i = 0; i < alvos.length; i++) {
+      var el = alvos[i];
+      if (el.querySelector('.letra')) continue;
+      var linhas = el.children.length ? [].slice.call(el.children) : [el];
+      /* Cada linha é um <span>: junta com espaço, senão o leitor de tela
+         ouviria "Caminhosda Inclusão". */
+      var texto = linhas.map(function (l) { return l.textContent.trim(); })
+                        .join(' ').replace(/\s+/g, ' ').trim();
+      el.setAttribute('aria-label', texto);
+      var n = 0;
+      for (var L = 0; L < linhas.length; L++) {
+        var t = linhas[L].textContent;
+        var html = '';
+        for (var c = 0; c < t.length; c++) {
+          var ch = t.charAt(c);
+          html += ch === ' '
+            ? '<span class="letra" style="--i:' + n + '">&nbsp;</span>'
+            : '<span class="letra" style="--i:' + n + '">' + ch + '</span>';
+          n++;
+        }
+        linhas[L].innerHTML = html;
+      }
+      el.classList.add('dividido');
+    }
+  }
+
+  dividirEmPalavras('.secao__cabeca h2, .biblioteca h2, .card h3, .atividade h3');
+  dividirEmLetras('.hero h1');
+
+  /* --------------------------------------- 3. Revelação por rolagem
+     O elemento reaparece toda vez que volta à tela, subindo ou descendo.
+     A direção de entrada define o sentido do deslocamento: quem entra por
+     baixo sobe; quem entra por cima desce. O estado só é desfeito quando o
+     elemento sai inteiro da tela com folga, para não piscar na borda. */
   var alvos = document.querySelectorAll('.revelar');
 
   function revelarTudo() {
-    for (var i = 0; i < alvos.length; i++) alvos[i].classList.add('visivel');
+    for (var i = 0; i < alvos.length; i++) {
+      alvos[i].classList.add('visivel');
+      alvos[i].classList.remove('revelar--cima');
+    }
   }
 
-  if (!alvos.length) { /* nada a fazer */ }
-  else if (!('IntersectionObserver' in window) || !movimentoOk()) { revelarTudo(); }
-  else {
-    var obs = new IntersectionObserver(function (entradas) {
+  function esconderTodos() {
+    for (var i = 0; i < alvos.length; i++) alvos[i].classList.remove('visivel');
+  }
+
+  var obs = null;
+
+  function ligarRevelacao() {
+    if (!alvos.length) return;
+    if (!('IntersectionObserver' in window) || !movimentoOk()) { revelarTudo(); return; }
+    if (obs) return;
+    obs = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); }
+        if (e.intersectionRatio >= 0.12) {
+          e.target.classList.add('visivel');
+        } else if (e.intersectionRatio === 0) {
+          /* Fora da tela: prepara a próxima entrada pelo lado certo.
+             Acima da tela (bottom < 0) volta descendo; abaixo, sobe. */
+          e.target.classList.remove('visivel');
+          e.target.classList.toggle('revelar--cima', e.boundingClientRect.bottom < 0);
+        }
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    }, { rootMargin: '12% 0px 12% 0px', threshold: [0, 0.12] });
     for (var j = 0; j < alvos.length; j++) obs.observe(alvos[j]);
   }
 
-  /* Se o aluno pausar as animações depois, revela o que ficou escondido. */
+  function desligarRevelacao() {
+    if (obs) { obs.disconnect(); obs = null; }
+    revelarTudo();
+  }
+
+  ligarRevelacao();
+
+  /* O botão de pausar desliga a revelação e deixa tudo visível; religar
+     volta a animar sem precisar recarregar a página. */
   document.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('#a11y-movimento')) { setTimeout(revelarTudo, 30); }
+    if (!e.target.closest || !e.target.closest('#a11y-movimento')) return;
+    setTimeout(function () {
+      if (movimentoOk()) { esconderTodos(); ligarRevelacao(); }
+      else { desligarRevelacao(); }
+    }, 30);
   });
 
   /* -------------------------------- 4. Trilha de progresso dos módulos */
@@ -167,6 +260,24 @@
     pintarTrilha();
   }
 
+  /* ------------------------- 4b. Barra de progresso de leitura */
+  var barraProg = document.getElementById('progresso-leitura');
+  if (barraProg) {
+    var progAgendado = false;
+    function pintarProgresso() {
+      var alcance = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = alcance > 0 ? (window.scrollY / alcance) * 100 : 0;
+      barraProg.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    }
+    window.addEventListener('scroll', function () {
+      if (progAgendado) return;
+      progAgendado = true;
+      requestAnimationFrame(function () { pintarProgresso(); progAgendado = false; });
+    }, { passive: true });
+    window.addEventListener('resize', pintarProgresso);
+    pintarProgresso();
+  }
+
   /* -------------------------------------- 5. Contagem dos números */
   var contadores = document.querySelectorAll('[data-contar]');
   if (contadores.length) {
@@ -175,18 +286,21 @@
         contadores[k].textContent = contadores[k].getAttribute('data-contar') + (contadores[k].getAttribute('data-sufixo') || '');
       }
     } else {
+      /* Reconta toda vez que o bloco volta à tela, e não só na primeira. */
       var obsNum = new IntersectionObserver(function (entradas) {
         entradas.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          obsNum.unobserve(e.target);
-          var fim = parseInt(e.target.getAttribute('data-contar'), 10);
-          var sufixo = e.target.getAttribute('data-sufixo') || '';
+          var el = e.target;
+          if (!e.isIntersecting) { el.dataset.contando = ''; return; }
+          if (el.dataset.contando === 'sim') return;
+          el.dataset.contando = 'sim';
+          var fim = parseInt(el.getAttribute('data-contar'), 10);
+          var sufixo = el.getAttribute('data-sufixo') || '';
           var t0 = null;
           function passo(t) {
             if (t0 === null) t0 = t;
             var p = Math.min((t - t0) / 950, 1);
             var suave = 1 - Math.pow(1 - p, 3);
-            e.target.textContent = Math.round(fim * suave) + sufixo;
+            el.textContent = Math.round(fim * suave) + sufixo;
             if (p < 1) requestAnimationFrame(passo);
           }
           requestAnimationFrame(passo);

@@ -52,8 +52,23 @@
   --sombra-1: 0 1px 2px rgba(9, 40, 74, .06), 0 4px 14px rgba(9, 40, 74, .05);
   --sombra-2: 0 2px 6px rgba(9, 40, 74, .08), 0 18px 44px rgba(9, 40, 74, .12);
 
-  --dur:  .55s;
+  --dur:  .55s;                      /* revelação por rolagem */
   --ease: cubic-bezier(.22, .68, .28, 1);
+
+  /* Vocabulário de movimento em duas velocidades: cor responde rápido,
+     deslocamento demora mais. Cor e forma nunca mudam no mesmo tempo. */
+  --dur-cor:    .15s;
+  --dur-mov:    .3s;
+  --ease-saida: cubic-bezier(0, 0, .2, 1);
+  --ease-mov:   cubic-bezier(.4, 0, .2, 1);
+
+  /* Superfícies translúcidas e bordas-fio. Usam as cores do próprio
+     projeto em alpha baixo — nenhuma cor nova entra por aqui. */
+  --vidro-claro:  rgba(255, 255, 255, .82);
+  --vidro-escuro: rgba(7, 47, 92, .88);
+  --fio-escuro:   rgba(11, 74, 143, .12);
+  --fio-claro:    rgba(255, 255, 255, .16);
+  --desfoque:     blur(24px);
 }
 
 /* ==========================================================================
@@ -97,6 +112,7 @@
 [data-contraste="alto"] .secao--cinza { background: #000; }
 
 [data-contraste="alto"] .topo { backdrop-filter: none; border-bottom: 2px solid #FFF; }
+[data-contraste="alto"] .barra-a11y { backdrop-filter: none; }
 [data-contraste="alto"] .barra-a11y { border-bottom: 2px solid #FFF; }
 
 /* Blocos, cards e painéis: fundo preto, contorno branco visível */
@@ -292,6 +308,22 @@ a { color: var(--azul); }
 }
 [data-contraste="alto"] :focus-visible { outline-color: #000; outline-width: 4px; }
 
+/* Barra de progresso de leitura — fica acima de tudo, inclusive da barra
+   de acessibilidade. Decorativa: some quando o movimento está desligado. */
+.progresso-leitura {
+  position: fixed;
+  top: 0; left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, var(--amarelo), var(--verde));
+  z-index: 100;
+  pointer-events: none;
+  will-change: width;
+}
+[data-contraste="alto"] .progresso-leitura { background: #FFD33F; }
+@media (prefers-reduced-motion: reduce) { .progresso-leitura { display: none; } }
+html[data-movimento="pausado"] .progresso-leitura { display: none; }
+
 /* Pular para o conteúdo */
 .pular {
   position: absolute;
@@ -325,9 +357,10 @@ a { color: var(--azul); }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: var(--azul-900);
+  background: var(--vidro-escuro);
+  backdrop-filter: var(--desfoque);
   color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid var(--fio-claro);
 }
 .barra-a11y .env {
   display: flex;
@@ -363,7 +396,9 @@ a { color: var(--azul); }
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  transition: background .18s ease, border-color .18s ease;
+  transition: background var(--dur-cor) var(--ease-saida),
+              border-color var(--dur-cor) var(--ease-saida),
+              transform var(--dur-mov) var(--ease-mov);
   min-height: 34px;
 }
 .btn-a11y:hover { background: rgba(255,255,255,.2); }
@@ -408,9 +443,9 @@ a { color: var(--azul); }
   position: sticky;
   top: var(--topo-offset, 0px);
   z-index: 50;
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--linha);
+  background: var(--vidro-claro);
+  backdrop-filter: var(--desfoque);
+  border-bottom: 1px solid var(--fio-escuro);
 }
 .topo .env {
   display: flex;
@@ -439,7 +474,8 @@ a { color: var(--azul); }
   text-decoration: none;
   padding: 9px 14px;
   border-radius: 999px;
-  transition: background .18s ease, color .18s ease;
+  transition: background var(--dur-cor) var(--ease-saida),
+              color var(--dur-cor) var(--ease-saida);
 }
 .nav a:hover { background: var(--azul-100); color: var(--azul); }
 .nav a[aria-current="page"] { background: var(--azul); color: #fff; }
@@ -477,7 +513,9 @@ a { color: var(--azul); }
   text-decoration: none;
   cursor: pointer;
   min-height: 46px;
-  transition: transform .18s var(--ease), background .18s ease, box-shadow .18s ease;
+  transition: background var(--dur-cor) var(--ease-saida),
+              box-shadow var(--dur-cor) var(--ease-saida),
+              transform var(--dur-mov) var(--ease-mov);
 }
 .btn svg { width: 17px; height: 17px; flex: none; }
 .btn:hover { transform: translateY(-2px); }
@@ -509,7 +547,75 @@ a { color: var(--azul); }
   inset: 0;
   pointer-events: none;
   opacity: .5;
+  z-index: 1;
 }
+
+/* ---- Caminhos: luz percorrendo as curvas do hero ------------------------
+   As três curvas ficam na metade direita, onde não há texto nenhum — por
+   isso aqui não existe teto de contraste e o movimento pode ser forte.
+   Borda definida em vez de mancha difusa: é isso que o olho registra.
+   Anima stroke-dashoffset, que o navegador resolve sem recalcular layout. */
+.hero__grafismo { opacity: 1; }
+
+.hero__grafismo .fio-base { stroke: url(#fio); stroke-width: 2; }
+
+.hero__grafismo .fio-luz {
+  stroke: #FFD33F;
+  stroke-opacity: .5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 90 1100;
+  animation: correr var(--correr, 9s) linear infinite;
+}
+.hero__grafismo .fio-luz:nth-of-type(2) { --correr: 11s; animation-delay: -3s; stroke: #239F6B; stroke-opacity: .55; }
+.hero__grafismo .fio-luz:nth-of-type(3) { --correr: 13s; animation-delay: -7s; }
+
+@keyframes correr { to { stroke-dashoffset: -1190; } }
+
+.hero__grafismo .sol {
+  fill: url(#sol);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulsar 4s var(--ease-mov) infinite alternate;
+}
+
+/* Cada sol tem seu próprio compasso — 4s, 5.2s e 6.4s, com defasagem —
+   para que nunca pulsem em bloco. O raio é o mesmo nos três; o que difere
+   é só o instante do ciclo em que cada um está. */
+.hero__grafismo .sol:nth-of-type(2) { animation-duration: 5.2s; animation-delay: -1.6s; }
+.hero__grafismo .sol:nth-of-type(3) { animation-duration: 6.4s; animation-delay: -3.1s; }
+
+@keyframes pulsar {
+  from { opacity: .32; transform: scale(1); }
+  to   { opacity: 1;   transform: scale(1.32); }
+}
+
+.hero__grafismo .anel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: respirar 16s var(--ease-mov) infinite alternate;
+}
+.hero__grafismo .anel:nth-of-type(2) { animation-duration: 21s; animation-delay: -6s; }
+
+@keyframes respirar {
+  from { transform: scale(.86); stroke-opacity: .05; }
+  to   { transform: scale(1.14); stroke-opacity: .16; }
+}
+
+/* Movimento desligado: tudo para no lugar, nada some. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__grafismo .fio-luz,
+  .hero__grafismo .sol,
+  .hero__grafismo .anel { animation: none; }
+  .hero__grafismo .fio-luz { stroke-dasharray: none; stroke-opacity: .35; }
+}
+html[data-movimento="pausado"] .hero__grafismo .fio-luz,
+html[data-movimento="pausado"] .hero__grafismo .sol,
+html[data-movimento="pausado"] .hero__grafismo .anel { animation: none; }
+html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none; stroke-opacity: .35; }
+
+/* Alto contraste: grafismo decorativo sai de cena. */
+[data-contraste="alto"] .hero__grafismo { display: none; }
 .hero .env { position: relative; z-index: 1; }
 
 .hero__olho {
@@ -686,7 +792,9 @@ a { color: var(--azul); }
   padding: clamp(28px, 3.6vw, 44px);
   overflow: hidden;
   border: 1px solid transparent;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  transition: transform var(--dur-mov) var(--ease-mov),
+              box-shadow var(--dur-mov) var(--ease-mov),
+              border-color var(--dur-cor) var(--ease-saida);
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
@@ -699,7 +807,7 @@ a { color: var(--azul); }
 .card--azul    { background: var(--azul-100); }
 .card--verde   { background: var(--verde-100); }
 .card--amarelo { background: var(--amarelo-100); }
-.card--neutro  { background: var(--papel-2); border-color: var(--linha); }
+.card--neutro  { background: var(--papel-2); border-color: var(--fio-escuro); }
 
 .card__topo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
 
@@ -754,12 +862,14 @@ a { color: var(--azul); }
 }
 .atividade {
   background: var(--papel);
-  border: 1px solid var(--linha);
+  border: 1px solid var(--fio-escuro);
   border-radius: var(--raio);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s ease;
+  transition: transform var(--dur-mov) var(--ease-mov),
+              box-shadow var(--dur-mov) var(--ease-mov),
+              border-color var(--dur-cor) var(--ease-saida);
 }
 .atividade:hover { transform: translateY(-5px); box-shadow: var(--sombra-2); border-color: transparent; }
 .atividade__capa {
@@ -802,7 +912,7 @@ a { color: var(--azul); }
   color: var(--azul);
   text-decoration: none;
 }
-.link-seta svg { width: 16px; height: 16px; transition: transform .2s ease; }
+.link-seta svg { width: 16px; height: 16px; transition: transform var(--dur-mov) var(--ease-mov); }
 .link-seta:hover { text-decoration: underline; }
 .link-seta:hover svg { transform: translateX(4px); }
 .link-seta[aria-disabled="true"] { color: var(--tinta-60); pointer-events: none; }
@@ -961,9 +1071,66 @@ a { color: var(--azul); }
 .refs strong { color: var(--tinta); }
 
 /* ------------------------------------------------------ 13. Animações */
-.revelar { opacity: 0; transform: translateY(26px); }
-.revelar.visivel { opacity: 1; transform: none; transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+/* A transição fica na base, não no estado revelado: assim o elemento anima
+   ao entrar E ao sair, e pode reaparecer quantas vezes voltar à tela.
+   .revelar--cima é posto pelo JS quando o elemento saiu por cima, para que
+   ele volte descendo em vez de subindo. */
+.revelar {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.revelar--cima { transform: translateY(-26px); }
+.revelar.visivel { opacity: 1; transform: none; }
 .revelar.visivel[style*="--atraso"] { transition-delay: var(--atraso); }
+
+/* ---- Palavras entrando uma a uma -----------------------------------------
+   Cada palavra é uma caixa própria com seu atraso, calculado a partir do
+   índice. Como o gatilho é o mesmo .visivel da revelação por rolagem, elas
+   também SAEM quando a seção deixa a tela — e voltam a entrar depois.
+   O nome acessível fica no aria-label do título, então o leitor de tela lê
+   a frase inteira de uma vez e ignora a divisão. */
+.palavra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.45em);
+  transition: opacity .5s var(--ease-saida), transform .5s var(--ease-mov);
+  transition-delay: calc(var(--i) * .055s);
+  will-change: opacity, transform;
+}
+.visivel .palavra { opacity: 1; transform: none; }
+
+/* ---- Título do hero, letra por letra -------------------------------------
+   Cai e assenta com um leve giro. 40ms entre letras: rápido o bastante para
+   a frase não demorar a se formar, lento o bastante para o olho seguir. */
+.hero h1.dividido .letra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.5em) rotate(6deg);
+  animation: assentar .6s var(--ease-mov) forwards;
+  animation-delay: calc(var(--i) * .04s);
+  will-change: opacity, transform;
+}
+@keyframes assentar {
+  to { opacity: 1; transform: none; }
+}
+
+/* Quando o hero volta à tela, as letras caem de novo. */
+.hero h1.dividido.recomecar .letra { animation: none; opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1.dividido .letra { opacity: 1 !important; transform: none !important; animation: none !important; }
+}
+html[data-movimento="pausado"] .hero h1.dividido .letra {
+  opacity: 1 !important; transform: none !important; animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palavra { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+html[data-movimento="pausado"] .palavra {
+  opacity: 1 !important; transform: none !important; transition: none !important;
+}
 
 .entrada { opacity: 0; transform: translateY(20px); animation: subir .8s var(--ease) forwards; }
 @keyframes subir { to { opacity: 1; transform: none; } }
