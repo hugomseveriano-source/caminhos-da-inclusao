@@ -16,12 +16,14 @@
 
   --amarelo:     #FFD33F;
   --amarelo-600: #E0B01A;
+  --amarelo-texto: #896C10;  /* 4.98:1 sobre branco e 4.62:1 sobre o creme da pílula */
   --amarelo-100: #FFF6DC;
 
   --verde:       #239F6B;   /* verde do card — só grafismos sem texto em cima */
   --verde-bloco: #1D865A;   /* 4.56:1 com branco — mesma matiz, 6% mais escuro */
   --verde-texto: #16714B;   /* 6.00:1 sobre branco */
   --verde-btn:   #147A4C;   /* 5.36:1 com texto branco */
+  --verde-vidro: #125F3E;   /* base do bloco de vidro: aguenta lanterna a 22% com texto branco */
   --verde-100:   #E6F5EE;
 
   --tinta:       #12212F;
@@ -618,19 +620,47 @@ html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none
 [data-contraste="alto"] .hero__grafismo { display: none; }
 .hero .env { position: relative; z-index: 1; }
 
-.hero__olho {
+/* Etiqueta do hero: uma linha só, em vez das cinco de caixa-alta espaçada
+   que competiam com o título e partiam no meio das frases. O selo carrega
+   a identidade da página; o eixo, as três siglas do curso. */
+.hero__etiqueta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 0 30px;
+}
+.hero__selo {
+  display: inline-flex;
+  align-items: center;
+  background: var(--amarelo);
+  color: var(--azul-900);
   font-family: var(--display);
   font-size: var(--t-mini);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .18em;
-  color: var(--amarelo);
-  margin: 0 0 20px;
-  max-width: 46ch;
-  line-height: 1.6;
+  letter-spacing: .12em;
+  padding: 7px 15px;
+  border-radius: 999px;
 }
-.hero__olho b { display: block; font-weight: 700; }
-.hero__olho span { display: block; color: #B9CCE4; letter-spacing: .14em; margin-top: 6px; }
+.hero__eixo {
+  font-family: var(--display);
+  font-size: var(--t-mini);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #B9CCE4;
+}
+
+/* O nome do programa desce para depois do subtítulo, em caixa normal:
+   é informação institucional, não manchete. */
+.hero__programa {
+  font-size: var(--t-peq);
+  line-height: 1.55;
+  color: #B9CCE4;
+  max-width: 52ch;
+  margin: 0 0 40px;
+}
 
 .hero h1 {
   font-size: clamp(2.9rem, 8.2vw, 5.6rem);
@@ -653,24 +683,76 @@ html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none
   font-size: clamp(1.1rem, 2.1vw, 1.55rem);
   font-weight: 700;
   line-height: 1.42;
-  max-width: 30ch;
-  margin: 0 0 44px;
+  max-width: 32ch;
+  margin: 0 0 18px;
   color: #fff;
   font-family: var(--corpo);
   letter-spacing: -.005em;
 }
 
-/* Blocos de dados — mesmo tratamento gráfico do card impresso */
+/* ---- Blocos de dados: vidro sob a luz de uma lanterna --------------------
+   Três camadas: o vidro translúcido com desfoque, uma iridescência em
+   gradiente cônico com as três matizes do projeto, e um foco de luz que
+   atravessa devagar. Opacidades escolhidas por medição: empilhadas, o pior
+   caso é o texto branco do bloco verde em 4.79:1. Por isso o verde do vidro
+   é #125F3E e não o #239F6B do card — precisava de margem para a lanterna. */
 .blocos { display: flex; flex-wrap: wrap; gap: 18px; }
+
 .bloco-num {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   flex: 1 1 190px;
-  padding: 22px 26px 20px;
-  border-radius: 4px;
-  min-height: 118px;
+  padding: 24px 26px 22px;
+  border-radius: 14px;
+  min-height: 122px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .30);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .38),
+              0 10px 30px rgba(4, 24, 48, .22);
 }
+
+/* Iridescência: as matizes do projeto em alpha baixo, sem cor nova. */
+.bloco-num::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 200deg at 30% 18%,
+    rgba(17, 96, 180, .12),
+    rgba(35, 159, 107, .12),
+    rgba(255, 211, 63, .10),
+    rgba(17, 96, 180, .12));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* A lanterna: um foco que varre o vidro. */
+.bloco-num::after {
+  content: "";
+  position: absolute;
+  top: -70%;
+  bottom: -70%;
+  left: -35%;
+  width: 46%;
+  background: radial-gradient(ellipse at center,
+    rgba(255, 255, 255, .22) 0%,
+    rgba(255, 255, 255, .08) 45%,
+    rgba(255, 255, 255, 0) 72%);
+  transform: rotate(12deg);
+  animation: lanterna var(--lanterna, 9s) var(--ease-mov) infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes lanterna {
+  0%   { transform: rotate(12deg) translateX(-70%); }
+  100% { transform: rotate(12deg) translateX(330%); }
+}
+
+.bloco-num strong, .bloco-num em { position: relative; z-index: 1; }
+
 .bloco-num strong {
   display: block;
   font-family: var(--display);
@@ -690,12 +772,20 @@ html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none
   margin-top: 9px;
   line-height: 1.4;
 }
-.bloco-num--branco { background: #fff; color: var(--azul); }
-/* Este bloco carrega texto pequeno em branco: o verde do card daria 3.36:1. */
-.bloco-num--verde  { background: var(--verde-bloco); color: #fff; }
+
+.bloco-num--branco  { background: rgba(255, 255, 255, .80); color: var(--azul); --lanterna: 9s; }
+.bloco-num--verde   { background: rgba(18, 95, 62, .80);    color: #fff;        --lanterna: 11s; }
+.bloco-num--amarelo { background: rgba(255, 211, 63, .80);  color: var(--azul-900); --lanterna: 13s; }
 .bloco-num--verde strong, .bloco-num--verde em { color: #fff; }
-.bloco-num--amarelo { background: var(--amarelo); color: var(--azul-900); }
 .bloco-num--amarelo strong { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+
+@media (prefers-reduced-motion: reduce) { .bloco-num::after { animation: none; } }
+html[data-movimento="pausado"] .bloco-num::after { animation: none; }
+
+/* Alto contraste: nada de vidro. Fundo preto e contorno amarelo. */
+[data-contraste="alto"] .bloco-num::before,
+[data-contraste="alto"] .bloco-num::after { display: none; }
+[data-contraste="alto"] .bloco-num { backdrop-filter: none; box-shadow: none; }
 
 /* ------------------------------------------------------- 7. Seções gerais */
 .secao { padding-block: clamp(64px, 8vw, 108px); }
@@ -880,7 +970,7 @@ html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none
   position: relative;
   overflow: hidden;
 }
-.atividade__capa svg { width: 74px; height: 74px; position: relative; z-index: 1; }
+.atividade__capa svg { width: 64px; height: 64px; position: relative; z-index: 1; }
 .atividade__capa--azul    { background: var(--azul-100); color: var(--azul); }
 .atividade__capa--verde   { background: var(--verde-100); color: var(--verde-texto); }
 .atividade__capa--amarelo { background: var(--amarelo-100); color: var(--amarelo-600); }
@@ -1069,6 +1159,287 @@ html[data-movimento="pausado"] .hero__grafismo .fio-luz { stroke-dasharray: none
 .refs { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
 .refs li { padding-left: 20px; border-left: 3px solid var(--linha); font-size: var(--t-peq); color: var(--tinta-60); line-height: 1.6; }
 .refs strong { color: var(--tinta); }
+
+
+/* ==========================================================================
+   Gradient Bold Card — vidro fosco com borda que brilha em movimento
+   Técnica extraída do componente do Ruixen UI (21st.dev): uma mancha de
+   gradiente orbita os quatro cantos por trás do card, e um vidro recuado
+   5px cobre tudo menos a moldura. É na moldura que o brilho aparece.
+   Aqui a mancha usa a cor do próprio card em vez do rosa-vermelho-âmbar
+   do original, e o vidro fica a 93%: medi que o card azul reprova em
+   contraste a partir de 85%.
+   ========================================================================== */
+.card, .atividade {
+  position: relative;
+  isolation: isolate;
+}
+
+.card::before, .atividade::before {          /* a mancha que orbita */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(to right, var(--mancha-a), var(--mancha-b), var(--mancha-c));
+  filter: blur(26px);
+  animation: orbitar var(--orbita, 9s) linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card::after, .atividade::after {            /* o vidro por cima */
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: calc(var(--raio) - 5px);
+  background: var(--vidro-card);
+  backdrop-filter: blur(24px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* O conteúdo sobe acima das duas camadas. */
+.card > *, .atividade > * { position: relative; z-index: 2; }
+
+@keyframes orbitar {
+  0%   { transform: translate(-100%, -100%); }
+  25%  { transform: translate(0%, -100%); }
+  50%  { transform: translate(0%, 0%); }
+  75%  { transform: translate(-100%, 0%); }
+  100% { transform: translate(-100%, -100%); }
+}
+
+/* Cada card acende na sua própria família de cor. */
+.card--azul {
+  --mancha-a: #1160B4; --mancha-b: #0B4A8F; --mancha-c: #239F6B;
+  --vidro-card: rgba(231, 239, 249, .93);
+  --orbita: 9s;
+}
+.card--verde {
+  --mancha-a: #239F6B; --mancha-b: #16714B; --mancha-c: #1160B4;
+  --vidro-card: rgba(230, 245, 238, .93);
+  --orbita: 11s;
+}
+.card--amarelo {
+  --mancha-a: #FFD33F; --mancha-b: #E0B01A; --mancha-c: #239F6B;
+  --vidro-card: rgba(255, 246, 220, .93);
+  --orbita: 13s;
+}
+.card--neutro {
+  --mancha-a: #1160B4; --mancha-b: #536172; --mancha-c: #0B4A8F;
+  --vidro-card: rgba(246, 248, 251, .93);
+  --orbita: 15s;
+}
+.atividade {
+  --mancha-a: #1160B4; --mancha-b: #239F6B; --mancha-c: #FFD33F;
+  --vidro-card: rgba(255, 255, 255, .93);
+  --orbita: 12s;
+}
+.atividade:nth-child(2) { --orbita: 14s; }
+.atividade:nth-child(3) { --orbita: 16s; }
+.atividade:nth-child(4) { --orbita: 18s; }
+
+/* A capa colorida da atividade fica acima do vidro. */
+.atividade__capa { position: relative; z-index: 2; }
+
+/* Movimento desligado: a mancha para num canto, o brilho continua ali. */
+@media (prefers-reduced-motion: reduce) {
+  .card::before, .atividade::before { animation: none; }
+}
+html[data-movimento="pausado"] .card::before,
+html[data-movimento="pausado"] .atividade::before { animation: none; }
+
+/* Alto contraste: nada de vidro nem brilho — fundo preto e contorno branco. */
+[data-contraste="alto"] .card::before,
+[data-contraste="alto"] .card::after,
+[data-contraste="alto"] .atividade::before,
+[data-contraste="alto"] .atividade::after { display: none; }
+
+
+/* ==========================================================================
+   Card de artigo — modelo do Blog Post Card (Erik, 21st.dev)
+   Anatomia do original: card com padding 12px e raio 24px, capa com raio
+   16px e object-fit cover, linha de meta com pílula arredondada, título de
+   24px em peso 700, resumo em cinza e rodapé em duas colunas.
+   Mantida a borda que brilha do Gradient Bold Card por baixo.
+   ========================================================================== */
+.atividade {
+  background: var(--papel);
+  border: 1px solid var(--fio-escuro);
+  border-radius: 24px;
+  padding: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Capa: a imagem ou o painel do ícone */
+.atividade__capa {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.atividade__capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.atividade__corpo { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+
+/* Linha de meta com a pílula */
+.atividade__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: var(--t-peq);
+  color: var(--tinta-60);
+  font-family: var(--display);
+}
+.atividade__marca {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: var(--t-mini);
+  font-weight: 700;
+  background: var(--marca-fundo, var(--papel-2));
+  color: var(--marca-cor, var(--tinta-60));
+}
+.atividade__meta .sep { color: var(--linha); }
+
+/* Título na cor do próprio card */
+.atividade h3 {
+  font-size: calc(1.4rem * var(--escala));
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  color: var(--titulo-cor, var(--azul-900));
+}
+.atividade p { color: var(--tinta-60); font-size: var(--t-peq); margin-bottom: 16px; }
+
+/* Rodapé em duas colunas, como no modelo */
+/* Duas colunas de largura igual em vez de espaço-entre: com flex livre os
+   rótulos quebravam no meio ("Ligada / ao", "Requisito / para"). */
+.atividade__rodape {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px 14px;
+  padding: 12px;
+  margin-top: auto;
+  border-top: 1px solid var(--fio-escuro);
+}
+.atividade__rodape > div:last-child { text-align: right; }
+.atividade__rodape .rot {
+  display: block;
+  font-size: var(--t-mini);
+  color: var(--tinta-60);
+  font-family: var(--display);
+  margin-bottom: 2px;
+  white-space: nowrap;          /* o rótulo nunca quebra */
+}
+.atividade__rodape .val {
+  font-size: var(--t-peq);
+  font-weight: 700;
+  font-family: var(--display);
+  color: var(--tinta);
+}
+
+/* Cada card acende e titula na sua família de cor */
+.atividade--azul {
+  --titulo-cor: #0B4A8F; --marca-fundo: var(--azul-100); --marca-cor: #0B4A8F;
+  --mancha-a: #1160B4; --mancha-b: #0B4A8F; --mancha-c: #239F6B;
+}
+.atividade--verde {
+  --titulo-cor: #16714B; --marca-fundo: var(--verde-100); --marca-cor: #16714B;
+  --mancha-a: #239F6B; --mancha-b: #16714B; --mancha-c: #1160B4;
+}
+.atividade--amarelo {
+  --titulo-cor: var(--amarelo-texto); --marca-fundo: var(--amarelo-100); --marca-cor: var(--amarelo-texto);
+  --mancha-a: #FFD33F; --mancha-b: #E0B01A; --mancha-c: #239F6B;
+}
+.atividade--neutro {
+  --titulo-cor: #12212F; --marca-fundo: var(--papel-2); --marca-cor: var(--tinta-60);
+  --mancha-a: #1160B4; --mancha-b: #536172; --mancha-c: #0B4A8F;
+}
+
+[data-contraste="alto"] .atividade h3,
+[data-contraste="alto"] .atividade__marca { color: #FFD33F !important; }
+[data-contraste="alto"] .atividade__marca { background: #000 !important; border: 2px solid #FFD33F; }
+[data-contraste="alto"] .atividade__rodape { border-top-color: #FFF; }
+[data-contraste="alto"] .atividade__rodape .val { color: #FFF !important; }
+
+
+/* ==========================================================================
+   Espelhamento — brilho especular varrendo as superfícies de imagem
+   Inspirado nos cards de chip da Apple. Lá a iridescência está pintada na
+   arte; aqui é uma faixa de luz diagonal em movimento, que é o que produz
+   a leitura de superfície polida.
+   Aplicado SÓ onde não há texto: a capa dos cards e a cena ilustrada dos
+   módulos. Uma faixa branca por cima de texto derrubaria o contraste.
+   ========================================================================== */
+.atividade__capa, .card__cena {
+  position: relative;
+  overflow: hidden;
+}
+.atividade__capa::after,
+.card__cena::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: -40%;
+  width: 40%;
+  background: linear-gradient(100deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.10) 35%,
+    rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,.10) 65%,
+    rgba(255,255,255,0) 100%);
+  transform: rotate(14deg) translateX(0);
+  animation: espelhar var(--espelho, 7s) var(--ease-mov) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* A varredura ocupa só o fim do ciclo: é um lampejo periódico, não um
+   brilho constante correndo pela tela. */
+@keyframes espelhar {
+  0%, 62%  { transform: rotate(14deg) translateX(-160%); opacity: 0; }
+  66%      { opacity: 1; }
+  96%      { opacity: 1; }
+  100%     { transform: rotate(14deg) translateX(420%); opacity: 0; }
+}
+
+/* Tempos distintos para os cards não lampejarem em bloco. */
+.atividade:nth-child(1) .atividade__capa::after { --espelho: 7s; }
+.atividade:nth-child(2) .atividade__capa::after { --espelho: 8.4s; animation-delay: -2s; }
+.atividade:nth-child(3) .atividade__capa::after { --espelho: 9.8s; animation-delay: -4s; }
+.atividade:nth-child(4) .atividade__capa::after { --espelho: 11.2s; animation-delay: -6s; }
+.etapa:nth-child(1) .card__cena::after { --espelho: 9s; }
+.etapa:nth-child(2) .card__cena::after { --espelho: 10.5s; animation-delay: -3s; }
+.etapa:nth-child(3) .card__cena::after { --espelho: 12s; animation-delay: -6s; }
+.etapa:nth-child(4) .card__cena::after { --espelho: 13.5s; animation-delay: -9s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .atividade__capa::after, .card__cena::after { display: none; }
+}
+html[data-movimento="pausado"] .atividade__capa::after,
+html[data-movimento="pausado"] .card__cena::after { display: none; }
+
+[data-contraste="alto"] .atividade__capa::after,
+[data-contraste="alto"] .card__cena::after { display: none; }
 
 /* ------------------------------------------------------ 13. Animações */
 /* A transição fica na base, não no estado revelado: assim o elemento anima

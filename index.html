@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/portal.css?v=26">
+<link rel="stylesheet" href="assets/css/portal.css?v=33">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B4A8F'/><path d='M7 23 Q16 23 16 16 T25 9' stroke='%23FFD33F' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
 </head>
 <body>
@@ -63,10 +63,10 @@
       <span class="topo__nome">Caminhos da Inclusão<span>Portal do aluno</span></span>
     </a>
     <nav class="nav" aria-label="Seções do portal">
+      <a href="#funcionamento">Como funciona</a>
       <a href="#modulos">Módulos</a>
       <a href="#atividades">Atividades</a>
       <a href="#biblioteca">Biblioteca</a>
-      <a href="#funcionamento">Como funciona</a>
     </nav>
   </div>
 </header>
@@ -109,9 +109,9 @@
   </svg>
 
   <div class="env">
-    <p class="hero__olho entrada entrada--1">
-      <b>Programa de Apoio à Educação de Jovens e Adultos<br>Integrada à Educação Profissional (EJA-EPT)</b>
-      <span>Educação Especial · EJA · EPT — Portal do aluno</span>
+    <p class="hero__etiqueta entrada entrada--1">
+      <span class="hero__selo">Portal do aluno</span>
+      <span class="hero__eixo">Educa&ccedil;&atilde;o Especial &middot; EJA &middot; EPT</span>
     </p>
 
     <h1 class="hero__titulo"><span>Caminhos</span><span>da Inclusão</span></h1>
@@ -119,6 +119,8 @@
     <div class="hero__regua" aria-hidden="true"></div>
 
     <p class="hero__sub entrada entrada--3">Intersecções, barreiras e práticas na EJA e na EPT para o público da Educação Especial.</p>
+
+    <p class="hero__programa entrada entrada--3">Programa de Apoio &agrave; Educa&ccedil;&atilde;o de Jovens e Adultos Integrada &agrave; Educa&ccedil;&atilde;o Profissional &mdash; EJA-EPT</p>
 
     <div class="blocos entrada entrada--4">
       <div class="bloco-num bloco-num--branco">
@@ -147,57 +149,63 @@
     </div>
 
     <div class="grade-atividades">
-      <article class="atividade revelar">
-        <div class="atividade__capa atividade__capa--azul">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="8" y="12" width="32" height="40" rx="3" stroke="currentColor" stroke-width="3"/>
-            <path d="M16 24h16M16 32h16M16 40h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <path d="M42 26l10 6-10 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <article class="atividade atividade--azul revelar">
+        <div class="atividade__capa">
+          <img src="assets/img/card-azul.jpg" alt="Mesa de estudo em tom azul, com livros abertos, canetas marca-texto e uma caneca de caf&eacute;" loading="lazy" width="807" height="450">
         </div>
         <div class="atividade__corpo">
+          <p class="atividade__meta"><span class="atividade__marca">Ritmo</span></p>
           <h3>Estude na ordem que quiser</h3>
-          <p>Os quatro módulos ficam abertos desde o primeiro dia. A numeração indica um percurso sugerido — do fundamento legal à prática —, não uma trava.</p>
+          <p>Os quatro m&oacute;dulos ficam abertos desde o primeiro dia. A numera&ccedil;&atilde;o indica um percurso sugerido &mdash; do fundamento legal &agrave; pr&aacute;tica &mdash;, n&atilde;o uma trava.</p>
+        </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Percurso</span><span class="val">Livre</span></div>
+          <div><span class="rot">M&oacute;dulos</span><span class="val">4 abertos</span></div>
         </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.08s">
-        <div class="atividade__capa atividade__capa--verde">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M32 10 12 20v14c0 12 8 18 20 20 12-2 20-8 20-20V20L32 10Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M24 32l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <article class="atividade atividade--verde revelar">
+        <div class="atividade__capa">
+          <img src="assets/img/card-verde.jpg" alt="Mesa de estudo em tom verde, com livros anotados e um notebook exibindo uma aula em v&iacute;deo" loading="lazy" width="807" height="450">
         </div>
         <div class="atividade__corpo">
+          <p class="atividade__meta"><span class="atividade__marca">M&eacute;todo</span></p>
           <h3>A teoria vem antes do encontro</h3>
-          <p>Sala de aula invertida: você absorve os conceitos nas aulas assíncronas para que as quatro horas ao vivo sejam de debate e casos reais, não de exposição.</p>
+          <p>Sala de aula invertida: voc&ecirc; absorve os conceitos nas aulas ass&iacute;ncronas para que as quatro horas ao vivo sejam de debate e casos reais, n&atilde;o de exposi&ccedil;&atilde;o.</p>
+        </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Formato</span><span class="val">Sala invertida</span></div>
+          <div><span class="rot">Ao vivo</span><span class="val">4 horas</span></div>
         </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.16s">
-        <div class="atividade__capa atividade__capa--amarelo">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="10" y="14" width="44" height="34" rx="4" stroke="currentColor" stroke-width="3"/>
-            <path d="M10 24h44" stroke="currentColor" stroke-width="3"/>
-            <path d="M24 36l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <article class="atividade atividade--amarelo revelar">
+        <div class="atividade__capa">
+          <img src="assets/img/card-amarelo.jpg" alt="Mesa de estudo em tom amarelo, com um notebook exibindo o Google Classroom e atividades marcadas como entregues" loading="lazy" width="807" height="450">
         </div>
         <div class="atividade__corpo">
-          <h3>As entregas vão no Google Classroom</h3>
-          <p>Cada atividade tem seu enunciado aqui e o campo de envio na turma do Classroom. A devolutiva do professor volta por lá.</p>
+          <p class="atividade__meta"><span class="atividade__marca">Entrega</span></p>
+          <h3>As entregas v&atilde;o no Google Classroom</h3>
+          <p>Cada atividade tem seu enunciado aqui e o campo de envio na turma do Classroom. A devolutiva do professor volta por l&aacute;.</p>
+        </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Plataforma</span><span class="val">Classroom</span></div>
+          <div><span class="rot">Devolutiva</span><span class="val">Por atividade</span></div>
         </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.24s">
-        <div class="atividade__capa atividade__capa--neutro">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="3"/>
-            <path d="M32 20v13l9 5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <article class="atividade atividade--neutro revelar">
+        <div class="atividade__capa">
+          <img src="assets/img/card-cinza.jpg" alt="Mesa de estudo em preto e branco, com agenda, notebook e lembretes escritos quinze horas e seis semanas" loading="lazy" width="807" height="450">
         </div>
         <div class="atividade__corpo">
+          <p class="atividade__meta"><span class="atividade__marca">Dura&ccedil;&atilde;o</span></p>
           <h3>Quinze horas, seis semanas</h3>
-          <p>De 14 de agosto a 25 de setembro de 2026. São cerca de duas horas e meia por semana — cabe num domingo à tarde.</p>
+          <p>De 14 de agosto a 25 de setembro de 2026. S&atilde;o cerca de duas horas e meia por semana &mdash; cabe num domingo &agrave; tarde.</p>
+        </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Carga</span><span class="val">15 horas</span></div>
+          <div><span class="rot">Per&iacute;odo</span><span class="val">14/08 a 25/09</span></div>
         </div>
       </article>
     </div>
@@ -394,85 +402,67 @@
     </div>
 
     <div class="grade-atividades">
-      <article class="atividade revelar">
+      <article class="atividade atividade--azul revelar">
         <div class="atividade__capa atividade__capa--azul">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M6 14a4 4 0 0 1 4-4h30a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H20l-9 8v-8h-1a4 4 0 0 1-4-4V14Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M15 20h20M15 28h13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <path d="M50 26h4a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4h-1v6l-7-6H36" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-          </svg>
+          <img src="assets/img/atv-azul.jpg" alt="Professora aponta para uma tela que exibe o f&oacute;rum da turma com um relato de experi&ecirc;ncia; seis estudantes da EPT acompanham em volta de uma mesa redonda, um deles cadeirante" loading="lazy" width="1024" height="559">
         </div>
         <div class="atividade__corpo">
-          <p class="atividade__num">Atividade 1 · 1h30</p>
-          <h3>Relato de experiência</h3>
-          <p>Um caso vivido na sua escola, analisado à luz da Resolução 3/2025, da LBI e das diretrizes da EPT. Postado no fórum da turma, para todos debaterem.</p>
-          <ul class="atividade__pes">
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Individual, postado no fórum</li>
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ligado ao Módulo 1</li>
-          </ul>
+          <p class="atividade__meta"><span class="atividade__marca">Atividade 1 &middot; 1h30</span></p>
+          <h3>Relato de experi&ecirc;ncia</h3>
+          <p>Um caso vivido na sua escola, analisado &agrave; luz da Resolu&ccedil;&atilde;o 3/2025, da LBI e das diretrizes da EPT. Postado no f&oacute;rum da turma, para todos debaterem.</p>
           <a class="link-seta" href="modulos/atividade-1.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Formato</span><span class="val">Individual, no f&oacute;rum</span></div>
+          <div><span class="rot">Ligada ao</span><span class="val">M&oacute;dulo 1</span></div>
+        </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.08s">
+      <article class="atividade atividade--verde revelar">
         <div class="atividade__capa atividade__capa--verde">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="12" y="8" width="34" height="44" rx="4" stroke="currentColor" stroke-width="3"/>
-            <path d="M20 20h18M20 28h18M20 36h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="44" cy="42" r="11" fill="#fff" stroke="currentColor" stroke-width="3"/>
-            <path d="M52 50l6 6" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/img/atv-verde.jpg" alt="Estudante sozinho numa bancada de laborat&oacute;rio vazio, lendo um caderno, com as demais mesas desocupadas ao fundo" loading="lazy" width="1024" height="559">
         </div>
         <div class="atividade__corpo">
-          <p class="atividade__num">Atividade 2 · 2h</p>
-          <h3>Estudo de caso: a evasão de João</h3>
-          <p>Um estudante de 28 anos abandona o técnico integrado à EJA. Você redige o estudo de caso apontando onde o sistema falhou.</p>
-          <ul class="atividade__pes">
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Individual, com devolutiva</li>
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ligada ao Módulo 2</li>
-          </ul>
+          <p class="atividade__meta"><span class="atividade__marca">Atividade 2 &middot; 2h</span></p>
+          <h3>Estudo de caso: a evas&atilde;o de Jo&atilde;o</h3>
+          <p>Um estudante de 28 anos abandona o t&eacute;cnico integrado &agrave; EJA. Voc&ecirc; redige o estudo de caso apontando onde o sistema falhou.</p>
           <a class="link-seta" href="modulos/atividade-2.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Formato</span><span class="val">Individual, com devolutiva</span></div>
+          <div><span class="rot">Ligada ao</span><span class="val">M&oacute;dulo 2</span></div>
+        </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.16s">
+      <article class="atividade atividade--amarelo revelar">
         <div class="atividade__capa atividade__capa--amarelo">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <rect x="14" y="12" width="36" height="42" rx="4" stroke="currentColor" stroke-width="3"/>
-            <rect x="25" y="6" width="14" height="10" rx="3" stroke="currentColor" stroke-width="3" fill="#fff"/>
-            <path d="M22 30h12M22 40h20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="43" cy="28" r="7" stroke="currentColor" stroke-width="3"/>
-            <path d="M43 21v-3M43 38v-3M50 28h3M33 28h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/img/atv-amarelo.jpg" alt="Professor no Laborat&oacute;rio de Tecnologia Assistiva usa um ampliador de tela sobre um circuito eletr&ocirc;nico, ao lado de um tablet e de um roteiro de interven&ccedil;&atilde;o impresso" loading="lazy" width="1024" height="559">
         </div>
         <div class="atividade__corpo">
-          <p class="atividade__num">Atividade 3 · 2h</p>
-          <h3>Roteiro de intervenção com TA</h3>
-          <p>Um plano prático: como adaptar uma atividade da sua própria disciplina usando tecnologia assistiva ou um princípio do DUA.</p>
-          <ul class="atividade__pes">
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Aplicável na sua turma real</li>
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Socializado no encontro ao vivo</li>
-          </ul>
+          <p class="atividade__meta"><span class="atividade__marca">Atividade 3 &middot; 2h</span></p>
+          <h3>Roteiro de interven&ccedil;&atilde;o com TA</h3>
+          <p>Um plano pr&aacute;tico: como adaptar uma atividade da sua pr&oacute;pria disciplina usando tecnologia assistiva ou um princ&iacute;pio do DUA.</p>
           <a class="link-seta" href="modulos/atividade-3.html">Abrir a atividade<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Formato</span><span class="val">Aplic&aacute;vel na sua turma</span></div>
+          <div><span class="rot">Socializado no</span><span class="val">Encontro ao vivo</span></div>
+        </div>
       </article>
 
-      <article class="atividade revelar" style="--atraso:.24s">
+      <article class="atividade atividade--neutro revelar">
         <div class="atividade__capa atividade__capa--neutro">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M8 18a4 4 0 0 1 4-4h13l6 7h21a4 4 0 0 1 4 4v25a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V18Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M32 30l3.1 6.3 7 1-5 4.9 1.2 6.9-6.3-3.3-6.3 3.3 1.2-6.9-5-4.9 7-1L32 30Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
-          </svg>
+          <img src="assets/img/atv-cinza.jpg" alt="Professora escreve num caderno &agrave; mesa, entre um suporte de leitura, um notebook e pilhas de trabalhos corrigidos" loading="lazy" width="1024" height="559">
         </div>
         <div class="atividade__corpo">
-          <p class="atividade__num">Atividade 4 · Entrega final</p>
-          <h3>Portfólio e autoavaliação</h3>
-          <p>O fechamento do percurso: você reúne o que produziu e escreve o que mudou na sua leitura da própria prática.</p>
-          <ul class="atividade__pes">
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Enunciado em preparação</li>
-            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Requisito para o certificado</li>
-          </ul>
-          <a class="link-seta" href="modulos/atividade-4.html">Ver o que já está definido<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="atividade__meta"><span class="atividade__marca">Atividade 4 &middot; Entrega final</span></p>
+          <h3>Portf&oacute;lio e autoavalia&ccedil;&atilde;o</h3>
+          <p>O fechamento do percurso: voc&ecirc; re&uacute;ne o que produziu e escreve o que mudou na sua leitura da pr&oacute;pria pr&aacute;tica.</p>
+          <a class="link-seta" href="modulos/atividade-4.html">Ver o que j&aacute; est&aacute; definido<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="atividade__rodape">
+          <div><span class="rot">Situa&ccedil;&atilde;o</span><span class="val">Enunciado em prepara&ccedil;&atilde;o</span></div>
+          <div><span class="rot">Requisito para</span><span class="val">Certificado</span></div>
         </div>
       </article>
     </div>
@@ -572,6 +562,6 @@
 <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 -->
 
-<script src="assets/js/portal.js?v=26"></script>
+<script src="assets/js/portal.js?v=33"></script>
 </body>
 </html>
